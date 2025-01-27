@@ -1,0 +1,926 @@
+/* Fonts and Base Styles */
+body {
+  font-family: 'Merriweather', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2 {
+  font-family: 'Merriweather', serif;
+}
+
+/* Light Mode Variables */
+:root {
+  --background-light: #f9f9f9;
+  --text-light: #333333;
+  --accent-1: #f4026f; /* Red for light mode */
+  --hero-bg-light: #f0f0f0; /* Light gray for hero background */
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --background-light: #121212;
+  --text-light: #ffffff;
+  --accent-1: #80deea; /* Teal for dark mode */
+  --hero-bg-light: #1f1f1f; /* Dark gray for hero background */
+}
+/* General Section Styling */
+section {
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  display: flex; /* Center content */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  padding: 2rem;
+  scroll-snap-align: start; /* Ensures snapping to section */
+  scroll-snap-stop: always;
+}
+
+/* Enable Smooth Scrolling */
+html {
+  scroll-behavior: smooth; /* Smooth scroll between sections */
+}
+
+/* Header Styling */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Ensure it's on top of other content */
+  background-color: var(--background-light); /* Ensure background color is applied */
+  padding-top: 2rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* Adjust for spacing */
+  max-width: 1200px; /* Optional: Limit the width of the header */
+  margin: 0 auto; /* Center the header horizontally */
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Navigation Links (Desktop View) */
+.nav-links {
+  list-style: none;
+  display: flex; /* Flex for horizontal layout */
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--accent-1);
+}
+
+/* Actions (Theme Toggle & Menu Button) */
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.nav-actions button {
+  background-color: #e0e0e0; /* Light gray */
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-actions button:hover {
+  background-color: #d6d6d6;
+  transform: scale(1.1);
+}
+
+/* Mobile View */
+.menu-toggle {
+  display: none; /* Hidden by default */
+}
+
+@media screen and (max-width: 768px) {
+  /* Hide Navigation Links in Mobile View */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Stick directly below the header */
+    right: 0;
+    background-color: var(--background-light);
+    padding: 1.5rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 12px 12px;
+    text-align: right;
+  }
+
+  .nav-links.mobile li a {
+    padding: 0.5rem 0;
+  }
+
+  /* Show Menu Button in Mobile */
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+
+
+/* Hero Section */
+/* Hero Section */
+/* Hero Section */
+/* Hero Section */
+#hero {
+  position: relative;
+  padding: 2rem;
+  color: var(--text-light);
+  text-align: center;
+  overflow: hidden;
+  min-height: 80vh; /* Ensures flexibility for smaller viewports */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers all content horizontally */
+  justify-content: center; /* Centers all content vertically */
+  z-index: 10; /* Keep hero content on top */
+}
+
+.hero-content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 1rem; /* Add spacing between image and heading */
+  z-index: 10; /* Ensure it stays above the floating elements */
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  z-index: 10; /* Ensure it stays above the floating elements */
+}
+
+#dynamic-text {
+  font-family: 'Fira Code', monospace; /* Coding-style font */
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: var(--accent-1);
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--accent-1); /* Cursor effect */
+  animation: blinkCursor 0.5s steps(2, start) infinite; /* Blinking animation */
+  z-index: 10; /* Ensure it stays above the floating elements */
+}
+
+/* Floating Image */
+.floating-image {
+  width: 120px; /* Reduced avatar size */
+  height: 120px;
+  margin-bottom: 1rem;
+  animation: float 5s infinite ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 10; /* Ensure it stays above the floating elements */
+}
+
+.floating-image img {
+  width: 100%;
+  height: auto;
+  max-width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  animation: float 5s infinite ease-in-out, rotate 12s infinite linear;
+}
+
+/* Floating Elements */
+.floating-element {
+  position: absolute;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.3rem; /* Smaller size for a playful look */
+  color: var(--text-light); /* Adapt to light/dark mode text color */
+  animation: float 6s infinite ease-in-out; /* Floating animation */
+  transition: color 0.3s ease, filter 0.3s ease; /* Smooth transition */
+  z-index: 1; /* Ensure floating elements appear behind hero content */
+}
+
+/* Glow Effect for Selected Floating Elements */
+.floating-element.glow {
+  text-shadow: 0 0 5px var(--accent-1),  /* Dynamic glow color from --accent-1 */
+               0 0 10px var(--accent-1),
+               0 0 20px var(--accent-1);
+  animation: glow 1.5s infinite alternate, float 6s infinite ease-in-out;
+  z-index: 1; /* Glow stays behind hero content */
+}
+
+/* Blurry Floating Elements */
+.floating-element.blurry {
+  filter: blur(2px); /* Add a blurry effect for depth */
+  opacity: 0.7; /* Reduce opacity for a softer appearance */
+  z-index: 1; /* Ensure blur stays behind hero content */
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px); /* Upward movement */
+  }
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 10px var(--accent-1), 0 0 20px var(--accent-1);
+  }
+  100% {
+    text-shadow: 0 0 20px var(--accent-1), 0 0 30px var(--accent-1);
+  }
+}
+
+/* Interactive Hover Effect */
+.floating-element:hover {
+  transform: scale(1.2); /* Slight enlargement */
+  animation: none; /* Stop floating on hover */
+  cursor: pointer;
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 768px) {
+  .floating-element {
+    display: none; /* Hide all floating elements on mobile */
+  }
+}
+
+
+/* Contact Details */
+.contact-details {
+  margin-top: 1.5rem; /* Space above the contact section */
+  font-size: 1.2rem; /* Adjust text size */
+  line-height: 2; /* Spacing between lines */
+  color: var(--text-light); /* Match text color to the theme */
+  text-align: center; /* Center align all text */
+}
+
+.contact-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-details li {
+  margin-bottom: 1rem; /* Space between location and icons */
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  gap: 2rem; /* Space between each icon */
+}
+
+/* Links */
+.contact-details a {
+  text-decoration: none; /* Remove underline */
+  color: var(--accent-1); /* Accent color for links */
+  font-size: 1.8rem; /* Increase icon size */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.contact-details a:hover {
+  color: #ff8561; /* Hover color for links */
+}
+
+/* Icons */
+.contact-details i {
+  transition: color 0.3s ease; /* Smooth color transition for icons */
+}
+
+body.dark-mode .contact-details i {
+  color: var(--accent-1); /* Icon color in dark mode */
+}
+
+body:not(.dark-mode) .contact-details i {
+  color: #333333; /* Icon color in light mode */
+}
+@media screen and (max-width: 768px) {
+  #hero {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  #hero h2 {
+    font-size: 1.8rem; /* Adjust for smaller screens */
+  }
+  #dynamic-text {
+    font-size: 1.5rem;
+  }
+  .floating-image img {
+    max-width: 120px; /* Reduce avatar size */
+  }
+}
+
+
+
+/* About Me Section */
+#about-me {
+  margin: 4rem auto;
+  max-width: 1000px;
+  display: flex;
+  align-items: center; /* Aligns content vertically */
+  gap: 2rem; /* Space between the image and text */
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Add spacing between image and text */
+}
+
+/* Image Section */
+.about-image {
+  flex: 2; /* Takes 1/3 of the space */
+  display: flex;
+  justify-content: center; /* Center the image */
+}
+
+.about-image img {
+  width: 100%; /* Make the image responsive */
+  max-width: 250px; /* Limit the max size */
+  border-radius: 50%; /* Circular image */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.about-image img:hover {
+  animation: bounce 0.8s ease-in-out; /* Bouncy animation */
+}
+
+/* Bouncy Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at the same position */
+  }
+  50% {
+    transform: translateY(-15px); /* Moves up slightly in the middle */
+  }
+}
+
+/* Description Section */
+.about-desc {
+  flex: 3; /* Takes 2/3 of the space */
+  text-align: left; /* Align text to the left */
+}
+
+.about-desc h2 {
+  font-family: 'Epic Kantona', sans-serif;
+  font-size: 2.5rem;
+  color: var(--accent-1); /* Accent color for heading */
+  margin-bottom: 1rem;
+}
+
+.about-desc p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
+/* Hover Effect for Span and Strong */
+.about-desc strong, 
+.about-desc span {
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+  display: inline-block; /* Ensures transform applies correctly */
+  color: var(--accent-1);
+}
+
+.about-desc strong:hover, 
+.about-desc span:hover {
+  transform: scale(0.8); /* Grows in size when hovered */
+  color: var(--accent-1); /* Changes color on hover */
+}
+
+/* Adapt for Dark Mode */
+body.dark-mode #about-me {
+  background-color: transparent;
+  color: var(--text-light);
+}
+
+body.dark-mode .about-desc h2 {
+  color: var(--accent-1);
+}
+
+body.dark-mode .about-desc span {
+  color: var(--accent-1);
+}
+
+/* Base Animation Class */
+.animated {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Slightly down */
+  transition: all 0.8s ease-out; /* Smooth animation */
+}
+
+/* Fade-in Left Animation */
+.fade-in-left {
+  transform: translateX(-50px); /* Starts from the left */
+}
+
+.fade-in-right {
+  transform: translateX(50px); /* Starts from the right */
+}
+
+/* Trigger Animation */
+.animated.show {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0) translateY(0); /* Reset position */
+}
+
+/* Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+  #about-me {
+    flex-direction: column; /* Stack the image and description */
+    text-align: center; /* Center-align all content */
+    gap: 1.5rem; /* Add spacing between image and description */
+  }
+
+  .about-image {
+    justify-content: center; /* Center the image */
+    margin-bottom: 1rem; /* Add space below the image */
+  }
+
+  .about-image img {
+    max-width: 150px; /* Reduce the image size */
+  }
+
+  .about-desc {
+    text-align: center; /* Center-align description */
+  }
+
+  .about-desc h2 {
+    font-size: 1.8rem; /* Reduce heading size */
+  }
+
+  .about-desc p {
+    font-size: 0.7rem; /* Reduce paragraph text size */
+    line-height: 1.6; /* Adjust line height for readability */
+    padding-right: 2rem;
+  }
+}
+
+/* Experience Section */
+#experience {
+  margin: 4rem auto;
+  max-width: 1000px;
+  padding: 2rem;
+}
+
+#experience h2 {
+  font-family: 'Epic Kantona', cursive;
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--accent-1);
+  margin-bottom: 2rem;
+}
+
+/* Timeline Container */
+.timeline {
+  position: relative;
+  margin: 2rem 0;
+  padding-left: 2rem;
+  border-left: 3px solid var(--accent-1); /* Vertical line on larger screens */
+}
+
+/* Timeline Item */
+.timeline-item {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Content */
+.timeline-content {
+  position: relative;
+  margin-left: 1.5rem;
+  padding: 1rem;
+  background: var(--background-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.timeline-content:hover {
+  transform: translateY(-5px); /* Slightly lifts the card */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhances the shadow */
+}
+
+.timeline-content h3 {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.timeline-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.timeline-content ul li {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-light);
+}
+
+/* Circle Indicator */
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background: var(--accent-1);
+  border-radius: 50%;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode #experience {
+  color: var(--text-light);
+}
+
+body.dark-mode .timeline-content {
+  background: var(--hero-bg-light);
+  color: var(--text-light);
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  /* Remove vertical line for better usability */
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+    padding-right: 3rem;
+  }
+
+  /* Center timeline items */
+  .timeline-item {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-content {
+    margin-left: 0; /* Align centrally */
+    text-align: center; /* Center-align text */
+    padding: 1rem; /* Adjust padding for smaller screens */
+  }
+
+  .timeline-content h3 {
+    font-size: 1.2rem; /* Reduce heading size */
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content p {
+    font-size: 0.9rem; /* Reduce paragraph size */
+  }
+
+  .timeline-content ul {
+    padding-left: 0; /* Remove left padding */
+    text-align: center; /* Center-align bullet points */
+  }
+
+  .timeline-content ul li {
+    font-size: 0.8rem; /* Smaller bullet points */
+  }
+
+  /* Hide circle indicators */
+  .timeline-item:before {
+    display: none;
+  }
+
+  /* Add spacing for timeline items */
+  .timeline-item {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Skills Section */
+#skills {
+  margin: 4rem auto;
+  padding: 2rem;
+  max-width: 1000px;
+  text-align: center;
+}
+
+#skills h2 {
+  font-family: 'Epic Kantona', cursive;
+  font-size: 2.5rem;
+  color: var(--accent-1);
+  margin-bottom: 2rem;
+}
+
+/* Skills Container */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Space between categories */
+}
+
+/* Skills Category */
+.skills-category h3 {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-1);
+  display: inline-block;
+}
+
+/* Skills List */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between skill items */
+  justify-content: center;
+}
+
+/* Skill Item */
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 2px solid var(--accent-1);
+  border-radius: 50%;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--background-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-1);
+  transition: transform 0.3s ease;
+}
+
+.skill-item span {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+/* Hover Effects */
+.skill-item:hover {
+  transform: scale(1.1); /* Slightly enlarges the skill item */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adds depth */
+}
+
+.skill-item:hover i {
+  transform: rotate(360deg); /* Rotates the icon */
+  color: var(--accent-1); /* Accent color stays consistent */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #skills{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Projects Section */
+#projects {
+  min-height: 100vh; /* Ensure it occupies full viewport height */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-light);
+  scroll-snap-align: start;
+}
+
+#projects h2 {
+  font-family: 'Epic Kantona', sans-serif;
+  font-size: 2.5rem;
+  color: var(--accent-1);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-description {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px; /* Limits width for better design */
+}
+
+/* Project Card */
+.project-card {
+  background: var(--background-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+  border-color: var(--accent-1); /* Accent border on hover */
+}
+
+/* Project Header */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-header i {
+  font-size: 1.5rem;
+  color: var(--accent-1);
+}
+
+.project-links a {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+  color: var(--accent-1); /* Highlight on hover */
+}
+
+/* Project Title */
+.project-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+/* Project Description */
+.project-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+/* Tech Stack */
+.tech-stack {
+  font-size: 0.9rem; /* Smaller font for tech stack */
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6); /* Subtle opacity for tech stack text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #projects{
+    padding-top: 20rem;
+    padding-bottom: 25rem;
+  }
+  .projects-container {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background: var(--background-light);
+  color: var(--text-light);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Push footer to the bottom if content is less than viewport height */
+}
+#loom-companion-mv3,
+#shadow-host-companion {
+    display: none !important;
+}
+
+.resume-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text-light);
+  background: linear-gradient(145deg, #f2f0ff, #ffffff);
+  padding: 0.4rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1), 0 0 15px rgba(255, 0, 255, 0.2); /* Subtle glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-container .text{
+  font-size: 1rem;
+  font-weight: bold;
+}
+/* Hover Effects */
+.resume-container:hover {
+  transform: translateY(-3px); /* Slight lift */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 0, 255, 0.4); /* Enhance glow */
+}
+
+/* Icon Styling */
+.resume-container .icon {
+  font-size: 1.2rem; /* Adjust icon size */
+  margin-right: 0.5rem;
+}
+
+/* Text Divider */
+.resume-container .divider {
+  margin: 0 0.8rem;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* Resume Link Styling */
+.resume-container .resume-link {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.resume-container:hover .resume-link {
+  color: var(--accent-1); /* Accent color on hover */
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .resume-container {
+  background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(128, 222, 234, 0.2);
+}
+
+body.dark-mode .resume-container:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(128, 222, 234, 0.4);
+}
